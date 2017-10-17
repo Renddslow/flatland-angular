@@ -32,10 +32,6 @@ export class FooterComponent implements OnInit {
 			{
 				uri: "/blog",
 				label: "Blog"
-			},
-			{
-				uri: "/radio",
-				label: "Radio"
 			}
 		],
 		social: [
