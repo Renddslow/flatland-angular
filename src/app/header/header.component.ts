@@ -10,7 +10,7 @@ export class HeaderComponent implements OnInit {
 	navigation = {
 		login: [
 			{
-				uri: "https://my.flatlandchurch.com",
+				uri: "https://flatlandchurch.infellowship.com/UserLogin",
 				label: "Sign In"
 			}
 		],

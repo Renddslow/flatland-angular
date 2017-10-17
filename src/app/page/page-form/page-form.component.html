@@ -30,11 +30,23 @@
 
 		<span>When Can We Expect You?</span>
 		<div class="date-pick-container">
-			<label *ngFor="let date of dates">
-				{{ date.friendly }}
-				<em>{{ date.short }}</em>
-				<input type="radio" name="date" value="{{ date.value }}">
+			<label>
+				{{ dates[0].friendly }}
+				<em>{{ dates[0].short }}</em>
+				<input type="radio" [(ngModel)]="visitor.date" name="date" value="{{ dates[0].value }}">
 			</label>
+			<label>
+				{{ dates[1].friendly }}
+				<em>{{ dates[1].short }}</em>
+				<input type="radio" [(ngModel)]="visitor.date" name="date" value="{{ dates[1].value }}">
+			</label>
+			<label>
+				{{ dates[2].friendly }}
+				<em>{{ dates[2].short }}</em>
+				<input type="radio" [(ngModel)]="visitor.date" name="date" value="{{ dates[2].value }}">
+			</label>
+
+
 		</div>
 		<button (click)="sendVisitor()" class="cta">Plan Visit</button>
 	</form>

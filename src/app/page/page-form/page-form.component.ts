@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Http } from '@angular/http';
 import * as moment from 'moment';
 
 @Component({
@@ -11,6 +12,8 @@ export class PageFormComponent implements OnInit {
 	@Input() name: string;
 
 	profile: any;
+
+	constructor(private http: Http) {}
 
 	ngOnInit() {
   }
