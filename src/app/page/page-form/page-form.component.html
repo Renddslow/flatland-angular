@@ -1,0 +1,62 @@
+<div class="page-form {{ name }}" [ngSwitch]="name" id="{{ name }}">
+
+	<h2 *ngIf="title">{{ title }}</h2>
+
+	<!-- Visit Form -->
+	<!-- TODO: Move this into it's own component -->
+	<form *ngSwitchCase="'visit'" #heroForm="ngForm">
+		<div class="form-group">
+			<input type="text" [(ngModel)]="visitor.firstName" class="half" name="firstName" #name="ngModel" placeholder="Your First Name">
+			<input type="text" [(ngModel)]="visitor.lastName" class="half" name="lastName" placeholder="Your Last Name">
+		</div>
+
+		<div class="form-group">
+			<input type="email" class="full" [(ngModel)]="visitor.email" name="email" #name="ngModel" placeholder="Email">
+		</div>
+		<div class="form-group">
+			<input type="text" class="full" [(ngModel)]="visitor.phone" name="phone" #name="ngModel" placeholder="Phone">
+		</div>
+
+		<a class="cta" *ngIf="visitor.spouseCount < 1" (click)="addSpouse()">Add Spouse</a>
+		<div class="form-group">
+			<input type="text" *ngIf="visitor.spouseCount == 1" class="full" [(ngModel)]="visitor.spouse.name" placeholder="Spouse's First Name" name="spouse.name" #name="ngModel" placeholder="Spouse's Name">
+		</div>
+
+		<a class="cta" (click)="addChild()">Add Child</a>
+		<div class="children form-group" *ngFor="let child of visitor.children; let currentIndex = index">
+			<input type="text" class="half" [(ngModel)]="visitor.children[currentIndex].name" placeholder="Child's Name" name="name" #name="ngModel">
+			<input type="text" class="half" [(ngModel)]="visitor.children[currentIndex].dob" placeholder="Date of Birth (mm/dd/yyyy)" name="dob" #name="ngModel">
+		</div>
+
+		<span>When Can We Expect You?</span>
+		<div class="date-pick-container">
+			<label *ngFor="let date of dates">
+				{{ date.friendly }}
+				<em>{{ date.short }}</em>
+				<input type="radio" name="date" value="{{ date.value }}">
+			</label>
+		</div>
+		<button (click)="sendVisitor()" class="cta">Plan Visit</button>
+	</form>
+
+	<!-- Invite Form -->
+	<!-- TODO: Move this into it's own component -->
+	<form *ngSwitchCase="'invite'" #inviteForm="ngForm">
+		<div class="form-group">
+			<input type="text" class="full" [(ngModel)]="invite.friendName" name="friend-name" #name="ngModel" placeholder="Friend's Name">
+		</div>
+		<div class="form-group">
+			<input type="email" class="full" [(ngModel)]="invite.friendEmail" name="friend-email" #name="ngModel" placeholder="Friend's Email">
+		</div>
+		<div class="form-group">
+			<input type="text" class="full" [(ngModel)]="invite.name" name="name" #name="ngModel" placeholder="Your Name">
+		</div>
+		<div class="form-group">
+			<input type="email" class="full" [(ngModel)]="invite.email" name="email" #name="ngModel" placeholder="Your Email">
+		</div>
+		<div class="form-group">
+			<textarea [(ngModel)]="invite.message" name="message" placeholder="Write a personalized message..." rows="3" class="full"></textarea>
+		</div>
+		<button (click)="sendInvite()" class="cta">Send Invite</button>
+	</form>
+</div>
