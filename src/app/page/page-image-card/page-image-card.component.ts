@@ -14,6 +14,7 @@ export class PageImageCardComponent implements OnInit {
 	sermons = [];
 	events = [];
 	posts = [];
+	classes = [];
 
 	page: number = 0;
 
@@ -23,7 +24,7 @@ export class PageImageCardComponent implements OnInit {
 		if (this.type.includes("watch")) {
 			this.getSermons();
 		} else if (this.type.includes("recommended")) {
-			this.getRecommendations("stuff");
+			this.getRecommendations(this.permalink);
 		} else if (this.type.includes("enjoy")) {
 			this.http.request(`https://api.flatlandchurch.com/v1/events/`)
 				.subscribe((res: Response) => {
@@ -31,6 +32,8 @@ export class PageImageCardComponent implements OnInit {
 				});
 		} else if (this.type.includes("blog")) {
 			this.getBlogPosts();
+		} else if (this.type.includes('classes')) {
+			this.getClasses();
 		}
   }
 
@@ -62,13 +65,19 @@ export class PageImageCardComponent implements OnInit {
 			});
 	};
 
+	getClasses = () => {
+		this.http.request('https://api.flatlandchurch.com/v2/classes?key=pk_e6afff4e5ad186e9ce389cc21c225')
+			.subscribe((res: Response) => {
+				this.classes = this.classes.concat(res.json());
+				console.log(this.classes)
+			});
+	}
 
 	getRecommendations = (permalink) => {
-		this.http.request(`https://api.flatlandchurch.com/v1/watch/sermons`)
+		this.http.request(`https://api.flatlandchurch.com/v2/sermons/${permalink}/series?key=pk_e6afff4e5ad186e9ce389cc21c225`)
 			.subscribe((res: Response) => {
-				this.sermons.push(res.json()['sermons'][0]);
-				this.sermons.push(res.json()['sermons'][1]);
-				this.sermons.push(res.json()['sermons'][2]);
+				console.log(res.json().slice(0,3))
+				this.sermons = res.json().slice(0, 3);
 			});
 	}
 

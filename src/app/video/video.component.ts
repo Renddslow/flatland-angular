@@ -15,6 +15,7 @@ export class VideoComponent implements OnInit {
 	recommended = [];
 
 	modalOpen = false;
+	permalink: string;
 
   constructor(private http: Http, private route: ActivatedRoute, private sanitizer: DomSanitizer, private router: Router, private meta: Meta, private title: Title) { }
 
@@ -27,7 +28,8 @@ export class VideoComponent implements OnInit {
     });
 		this.sub = this.route.params.subscribe(params => {
 			let uri = "https://api.flatlandchurch.com/v1/watch/sermons/";
-			this.http.request(`${uri}${params['permalink']}`)
+			this.permalink = params['permalink'];
+			this.http.request(`${uri}${this.permalink}`)
 				.subscribe((res: Response) => {
 					this.sermon = res.json()['sermon'][0];
 					this.sermon['videoURI'] = this.sanitizer.bypassSecurityTrustResourceUrl(`https://player.vimeo.com/video/${this.sermon['video']}`);

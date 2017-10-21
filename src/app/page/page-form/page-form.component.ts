@@ -75,7 +75,10 @@ export class PageFormComponent implements OnInit {
 	}
 
 	sendVisitor() {
-		console.log(this.visitor)
+		this.http.post('http://localhost:3000/v2/emails/visit?key=e1daa99e44cb43d58ba0032510105f9c', this.visitor)
+			.subscribe(res => {
+				console.log(res.json())
+			});
 	}
 
 	sendInvite() {

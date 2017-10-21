@@ -25,8 +25,17 @@
 		<div class="card-image video" [ngStyle]="{'background-image': 'url(' + sermon['image'] + ')'}"></div>
 		<div class="card-meta video">
 			<h2>{{ sermon['title'] }}</h2>
-			<span>{{ sermon['series'] }}</span>
+			<span *ngIf="sermon['series']">{{ sermon['series'] }}</span>
 		</div>
 	</a>
 	<a class="cta" *ngIf="type != 'recommended'" style="width: 100%;" (click)="loadMore($event, 'watch')">Load More</a>
+</div>
+
+<div class="card-container" *ngIf="type == 'move/classes'">
+	<a *ngFor="let class of classes" class="image-card" [routerLink]="['/move/classes/'] + class['permalink']">
+		<div class="card-image video" [ngStyle]="{'background-image': 'url(' + class['image'] + ')'}"></div>
+		<div class="card-meta video">
+			<h2>{{ class['title'] }}</h2>
+		</div>
+	</a>
 </div>
