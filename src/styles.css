@@ -20,6 +20,12 @@ markdown h2 {
   margin: 0 0 .5em;
 }
 
+.email-response p {
+	font-size: 1.3em;
+  line-height: 2;
+  text-align: center;
+}
+
 .cta {
 	max-width: 295px;
 	display: block;

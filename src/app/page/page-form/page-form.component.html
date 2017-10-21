@@ -5,70 +5,78 @@
 	<!-- Visit Form -->
 	<!-- TODO: Move this into it's own component -->
 	<form *ngSwitchCase="'visit'" #heroForm="ngForm">
-		<div class="form-group">
-			<input type="text" [(ngModel)]="visitor.firstName" class="half" name="firstName" #name="ngModel" placeholder="Your First Name">
-			<input type="text" [(ngModel)]="visitor.lastName" class="half" name="lastName" placeholder="Your Last Name">
-		</div>
+		<div *ngIf="!showVisitThankYou">
+			<div class="form-group">
+				<input type="text" [(ngModel)]="visitor.firstName" class="half" name="firstName" #name="ngModel" placeholder="Your First Name">
+				<input type="text" [(ngModel)]="visitor.lastName" class="half" name="lastName" placeholder="Your Last Name">
+			</div>
 
-		<div class="form-group">
-			<input type="email" class="full" [(ngModel)]="visitor.email" name="email" #name="ngModel" placeholder="Email">
-		</div>
-		<div class="form-group">
-			<input type="text" class="full" [(ngModel)]="visitor.phone" name="phone" #name="ngModel" placeholder="Phone">
-		</div>
+			<div class="form-group">
+				<input type="email" class="full" [(ngModel)]="visitor.email" name="email" #name="ngModel" placeholder="Email">
+			</div>
+			<div class="form-group">
+				<input type="text" class="full" [(ngModel)]="visitor.phone" name="phone" #name="ngModel" placeholder="Phone">
+			</div>
 
-		<a class="cta" *ngIf="visitor.spouseCount < 1" (click)="addSpouse()">Add Spouse</a>
-		<div class="form-group">
-			<input type="text" *ngIf="visitor.spouseCount == 1" class="full" [(ngModel)]="visitor.spouse.name" placeholder="Spouse's First Name" name="spouse.name" #name="ngModel" placeholder="Spouse's Name">
+			<a class="cta" *ngIf="visitor.spouseCount < 1" (click)="addSpouse()">Add Spouse</a>
+			<div class="form-group">
+				<input type="text" *ngIf="visitor.spouseCount == 1" class="full" [(ngModel)]="visitor.spouse.name" placeholder="Spouse's First Name" name="spouse.name" #name="ngModel" placeholder="Spouse's Name">
+			</div>
+
+			<a class="cta" (click)="addChild()">Add Child</a>
+			<div class="children form-group" *ngFor="let child of visitor.children; let currentIndex = index">
+				<input type="text" class="half" [(ngModel)]="visitor.children[currentIndex].name" placeholder="Child's Name" name="name" #name="ngModel">
+				<input type="text" class="half" [(ngModel)]="visitor.children[currentIndex].dob" placeholder="Date of Birth (mm/dd/yyyy)" name="dob" #name="ngModel">
+			</div>
+
+			<span>When Can We Expect You?</span>
+			<div class="date-pick-container">
+				<label>
+					{{ dates[0].friendly }}
+					<em>{{ dates[0].short }}</em>
+					<input type="radio" [(ngModel)]="visitor.date" name="date" value="{{ dates[0].value }}">
+				</label>
+				<label>
+					{{ dates[1].friendly }}
+					<em>{{ dates[1].short }}</em>
+					<input type="radio" [(ngModel)]="visitor.date" name="date" value="{{ dates[1].value }}">
+				</label>
+				<label>
+					{{ dates[2].friendly }}
+					<em>{{ dates[2].short }}</em>
+					<input type="radio" [(ngModel)]="visitor.date" name="date" value="{{ dates[2].value }}">
+				</label>
+			</div>
+			<button (click)="sendVisitor()" class="cta">Plan Visit</button>
 		</div>
-
-		<a class="cta" (click)="addChild()">Add Child</a>
-		<div class="children form-group" *ngFor="let child of visitor.children; let currentIndex = index">
-			<input type="text" class="half" [(ngModel)]="visitor.children[currentIndex].name" placeholder="Child's Name" name="name" #name="ngModel">
-			<input type="text" class="half" [(ngModel)]="visitor.children[currentIndex].dob" placeholder="Date of Birth (mm/dd/yyyy)" name="dob" #name="ngModel">
+		<div class="email-response" *ngIf="showVisitThankYou">
+			<p>We can't wait to see you! Be looking for an email from us with more information about your visit to Flatland Church.</p>
 		</div>
-
-		<span>When Can We Expect You?</span>
-		<div class="date-pick-container">
-			<label>
-				{{ dates[0].friendly }}
-				<em>{{ dates[0].short }}</em>
-				<input type="radio" [(ngModel)]="visitor.date" name="date" value="{{ dates[0].value }}">
-			</label>
-			<label>
-				{{ dates[1].friendly }}
-				<em>{{ dates[1].short }}</em>
-				<input type="radio" [(ngModel)]="visitor.date" name="date" value="{{ dates[1].value }}">
-			</label>
-			<label>
-				{{ dates[2].friendly }}
-				<em>{{ dates[2].short }}</em>
-				<input type="radio" [(ngModel)]="visitor.date" name="date" value="{{ dates[2].value }}">
-			</label>
-
-
-		</div>
-		<button (click)="sendVisitor()" class="cta">Plan Visit</button>
 	</form>
 
 	<!-- Invite Form -->
 	<!-- TODO: Move this into it's own component -->
 	<form *ngSwitchCase="'invite'" #inviteForm="ngForm">
-		<div class="form-group">
-			<input type="text" class="full" [(ngModel)]="invite.friendName" name="friend-name" #name="ngModel" placeholder="Friend's Name">
+		<div *ngIf="!showInviteThankYou">
+			<div class="form-group">
+				<input type="text" class="full" [(ngModel)]="invite.friendName" name="friend-name" #name="ngModel" placeholder="Friend's Name">
+			</div>
+			<div class="form-group">
+				<input type="email" class="full" [(ngModel)]="invite.friendEmail" name="friend-email" #name="ngModel" placeholder="Friend's Email">
+			</div>
+			<div class="form-group">
+				<input type="text" class="full" [(ngModel)]="invite.name" name="name" #name="ngModel" placeholder="Your Name">
+			</div>
+			<div class="form-group">
+				<input type="email" class="full" [(ngModel)]="invite.email" name="email" #name="ngModel" placeholder="Your Email">
+			</div>
+			<div class="form-group">
+				<textarea [(ngModel)]="invite.message" name="message" placeholder="Write a personalized message..." rows="3" class="full"></textarea>
+			</div>
+			<button (click)="sendInvite()" class="cta">Send Invite</button>
 		</div>
-		<div class="form-group">
-			<input type="email" class="full" [(ngModel)]="invite.friendEmail" name="friend-email" #name="ngModel" placeholder="Friend's Email">
+		<div class="email-response" *ngIf="showInviteThankYou">
+			<p>Thanks so much for inviting a friend to Flatland Church. We've sent him or her an email with more information about Flatland, but we encourage you to follow up with them soon.</p>
 		</div>
-		<div class="form-group">
-			<input type="text" class="full" [(ngModel)]="invite.name" name="name" #name="ngModel" placeholder="Your Name">
-		</div>
-		<div class="form-group">
-			<input type="email" class="full" [(ngModel)]="invite.email" name="email" #name="ngModel" placeholder="Your Email">
-		</div>
-		<div class="form-group">
-			<textarea [(ngModel)]="invite.message" name="message" placeholder="Write a personalized message..." rows="3" class="full"></textarea>
-		</div>
-		<button (click)="sendInvite()" class="cta">Send Invite</button>
 	</form>
 </div>

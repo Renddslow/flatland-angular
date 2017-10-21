@@ -13,6 +13,9 @@ export class PageFormComponent implements OnInit {
 
 	profile: any;
 
+	showVisitThankYou = false;
+	showInviteThankYou = false;
+
 	constructor(private http: Http) {}
 
 	ngOnInit() {
@@ -77,7 +80,7 @@ export class PageFormComponent implements OnInit {
 	sendVisitor() {
 		this.http.post('https://api.flatlandchurch.com/v2/emails/visit?key=202f1c42-7054-46ee-8ca2-ddc85f9c789b', this.visitor)
 			.subscribe(res => {
-				console.log(res.json())
+				this.showVisitThankYou = true;
 			});
 	}
 
