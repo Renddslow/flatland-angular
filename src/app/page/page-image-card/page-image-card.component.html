@@ -39,3 +39,13 @@
 		</div>
 	</a>
 </div>
+
+<div class="card-container move" *ngIf="type == 'move/groups'">
+	<a *ngFor="let group of groups" class="image-card" [routerLink]="['/move/groups/'] + group['permalink']">
+		<div class="card-image video" *ngIf="group['image']" [ngStyle]="{'background-image': 'url(' + group['image'] + ')'}"></div>
+		<div class="card-image video" *ngIf="group['color']" [ngStyle]="{'background': group['color']}"></div>
+		<div class="card-meta video">
+			<h2>{{ group['title'] }}</h2>
+		</div>
+	</a>
+</div>

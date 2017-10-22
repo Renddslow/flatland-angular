@@ -15,6 +15,7 @@ export class PageImageCardComponent implements OnInit {
 	events = [];
 	posts = [];
 	classes = [];
+	groups = [];
 
 	page: number = 0;
 
@@ -34,6 +35,9 @@ export class PageImageCardComponent implements OnInit {
 			this.getBlogPosts();
 		} else if (this.type.includes('classes')) {
 			this.getClasses();
+		} else if (this.type.includes('groups')) {
+			console.log('hello')
+			this.getGroups();
 		}
   }
 
@@ -69,15 +73,20 @@ export class PageImageCardComponent implements OnInit {
 		this.http.request('https://api.flatlandchurch.com/v2/classes?key=pk_e6afff4e5ad186e9ce389cc21c225')
 			.subscribe((res: Response) => {
 				this.classes = this.classes.concat(res.json());
-				console.log(this.classes)
 			});
 	}
 
 	getRecommendations = (permalink) => {
 		this.http.request(`https://api.flatlandchurch.com/v2/sermons/${permalink}/series?key=pk_e6afff4e5ad186e9ce389cc21c225`)
 			.subscribe((res: Response) => {
-				console.log(res.json().slice(0,3))
 				this.sermons = res.json().slice(0, 3);
+			});
+	}
+
+	getGroups = () => {
+		this.http.request(`https://api.flatlandchurch.com/v2/groups?key=pk_e6afff4e5ad186e9ce389cc21c225`)
+			.subscribe((res: Response) => {
+				this.groups = res.json();
 			});
 	}
 

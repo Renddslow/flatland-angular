@@ -32,6 +32,8 @@ const appRoutes: Routes = [
 	{ path: '', component: HomepageComponent },
 	{ path: 'enjoy/:permalink', component: PostComponent },
 	{ path: 'blog/:permalink', component: PostComponent },
+	{ path: 'move/classes/:permalink', component: PostComponent },
+	{ path: 'move/groups/:permalink', component: PostComponent },
 	{ path: 'watch', component: BrowseComponent },
 	{ path: 'watch/:permalink', component: VideoComponent },
 	{ path: ':permalink', component: PageComponent },

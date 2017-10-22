@@ -1,16 +1,24 @@
 <div class="page">
-	<div class="page-background" [ngStyle]="{'background-image': 'url(' + pageData.jumbotronImage + ')'}">
+	<div class="page-background" [ngStyle]="{ 'background': pageData.color, 'background-image': 'url(' + pageData.jumbotronImage + ')'}">
 		<h1>{{ pageData.title }}</h1>
 		<div class="gradient"></div>
 	</div>
 	<div class="page-card">
 		<div class="page-card-nav" *ngIf="pageData.metaFields.length">
 			<ul>
-				<li *ngFor="let metaItem of pageData.metaFields">{{ metaItem }}</li>
+				<li *ngFor="let metaItem of pageData.metaFields"><span [innerHtml]="metaItem"></span></li>
 			</ul>
 		</div>
 		<div class="post-content">
 			<div [innerHtml]="toMarkdown(pageData.content)"></div>
 		</div>
+		<div class="post-details" *ngIf="hasDetails">
+			<h2>Details</h2>
+			<ul>
+				<li *ngFor="let details of pageDetails"><span [innerHtml]="details"></span></li>
+			</ul>
+		</div>
+		<a class="cta" *ngIf="pageData.inlineAction && pageData.inlineAction.internalUrl" [href]="pageData.inlineAction.internalUrl">{{ pageData.inlineAction.label }}</a>
+		<a class="cta" *ngIf="pageData.inlineAction && pageData.inlineAction.externalUrl" [href]="pageData.inlineAction.externalUrl">{{ pageData.inlineAction.label }}</a>
 	</div>
 </div>
