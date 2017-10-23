@@ -25,7 +25,7 @@
 		<div class="card-image video" [ngStyle]="{'background-image': 'url(' + sermon['image'] + ')'}"></div>
 		<div class="card-meta video">
 			<h2>{{ sermon['title'] }}</h2>
-			<span *ngIf="sermon['series']">{{ sermon['series'] }}</span>
+			<span *ngIf="sermon['series']">{{ sermon['series']['title'] }}</span>
 		</div>
 	</a>
 	<a class="cta" *ngIf="type != 'recommended'" style="width: 100%;" (click)="loadMore($event, 'watch')">Load More</a>

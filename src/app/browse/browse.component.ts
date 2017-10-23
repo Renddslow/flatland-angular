@@ -33,9 +33,9 @@ export class BrowseComponent implements OnInit {
 	}
 
   ngOnInit() {
-		this.http.request(`https://api.flatlandchurch.com/v1/watch/sermons?page=${this.page}`)
+		this.http.request(`https://api.flatlandchurch.com/v2/sermons?page=${this.page}&key=pk_e6afff4e5ad186e9ce389cc21c225`)
 			.subscribe((res: Response) => {
-				this.latestSermon = res.json()['sermons'][0];
+				this.latestSermon = res.json()[0];
 			});
   }
 

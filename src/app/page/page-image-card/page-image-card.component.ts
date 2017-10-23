@@ -62,9 +62,9 @@ export class PageImageCardComponent implements OnInit {
 	};
 
 	getSermons = () => {
-		this.http.request(`https://api.flatlandchurch.com/v1/watch/sermons?page=${this.page}`)
+		this.http.request(`https://api.flatlandchurch.com/v2/sermons?page=${this.page}&key=pk_e6afff4e5ad186e9ce389cc21c225`)
 			.subscribe((res: Response) => {
-				this.sermons = this.sermons.concat(res.json()['sermons']);
+				this.sermons = this.sermons.concat(res.json());
 				this.page += 1;
 			});
 	};
