@@ -12,10 +12,10 @@
 				<div class="video-details flex-item">
 					<span id="video-type">Sermons</span>
 					<h1>{{ sermon['title'] }}</h1>
-					<a *ngIf="sermon['series']" class="series">{{ sermon['series'] }}</a>
-					<span>{{ sermon['speaker'] }}</span>
-					<span id="date">{{ sermon['date_preached'] }}</span>
-					<p>{{ sermon['description'] }}</p>
+					<p>{{ sermon['series']['title'] }}</p>
+					<span>{{ sermon['speaker']['name'] }}</span>
+					<span id="date">{{ sermon['preached'] }}</span>
+					<p>{{ sermon['description'] || sermon['series']['description'] }}</p>
 					<a class="cta" [routerLink]="['/blog']">Read More</a>
 				</div>
 				<div class="video-social flex-item">

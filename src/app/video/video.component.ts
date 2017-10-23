@@ -3,6 +3,7 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Http, Response } from '@angular/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Meta, Title } from "@angular/platform-browser";
+import * as moment from 'moment-timezone';
 
 @Component({
   selector: 'app-video',
@@ -27,12 +28,14 @@ export class VideoComponent implements OnInit {
         window.scrollTo(0, 0)
     });
 		this.sub = this.route.params.subscribe(params => {
-			let uri = "https://api.flatlandchurch.com/v1/watch/sermons/";
 			this.permalink = params['permalink'];
-			this.http.request(`${uri}${this.permalink}`)
+			let uri = `https://api.flatlandchurch.com/v2/sermons/${this.permalink}?key=pk_e6afff4e5ad186e9ce389cc21c225`;
+			this.http.request(uri)
 				.subscribe((res: Response) => {
-					this.sermon = res.json()['sermon'][0];
-					this.sermon['videoURI'] = this.sanitizer.bypassSecurityTrustResourceUrl(`https://player.vimeo.com/video/${this.sermon['video']}`);
+					this.sermon = res.json();
+					this.sermon['videoURI'] = this.sanitizer.bypassSecurityTrustResourceUrl(`https://player.vimeo.com/video/${this.sermon['vimeoId']}`);
+					this.sermon['permalink'] = this.permalink;
+					this.sermon['preached'] = moment(this.sermon['preached'] * 1000).tz('America/Chicago').format('MMMM D')
 					this.title.setTitle(this.sermon['title'] + '| Flatland Church');
 					this.meta.addTags([
 						{ name: 'description', content: this.sermon['description'] },
