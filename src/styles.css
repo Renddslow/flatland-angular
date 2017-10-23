@@ -48,6 +48,15 @@ markdown h2 {
 	cursor: pointer;
 }
 
+.cta.cta-light {
+	color: #333;
+	background: #fff;
+}
+
+.cta.cta-left {
+	margin: 1em 0;
+}
+
 header {
   width: 100%;
   display: block;

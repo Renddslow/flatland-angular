@@ -14,6 +14,7 @@ export class HomepageComponent implements OnInit {
 	permalink: string;
 	sub: any;
 	page: {};
+	homeCards = [];
 
   constructor(private http: Http, private router: Router, private route: ActivatedRoute, private meta: Meta, private title: Title) {
 		title.setTitle('Welcome to Flatland Church');
@@ -42,6 +43,7 @@ export class HomepageComponent implements OnInit {
 		this.http.request(`${pageURI}/home`, {params})
 			.subscribe((res: Response) => {
 				this.page = res.json();
+				this.homeCards = this.page['homeCards'];
 			});
   }
 

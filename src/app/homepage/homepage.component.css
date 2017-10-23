@@ -1,22 +1,30 @@
 .homepage-jumbo {
   width: 100%;
   display: block;
-  height: calc(100vh - 122px);
+  height: calc(80vh - 122px);
   background-size: cover;
   background-position: center;
 	overflow: hidden;
 }
 
+.homepage-jumbo .dark {
+	width: 100%;
+  display: block;
+  height: calc(70vh - 122px);
+	overflow: hidden;
+	background: rgba(0,0,0,0.5);
+}
+
 .homepage-content-zone {
   display: block;
-  width: 100%;
-  margin: calc(40vh - 6em) auto 0;
+  width: 95%;
+  margin: calc(30vh - 6em) auto 0;
   text-align: center;
 }
 
 .homepage-content-zone h1 {
 	color: #fff;
-	font-size: 6em;
+	font-size: 4em;
 	text-shadow: 0 0 10px rgba(0,0,0,0.8);
 }
 
@@ -43,27 +51,103 @@
 	color: #333;
 }
 
-@media screen and (max-width: 960px) {
-	.homepage-content-zone {
-		margin: calc(40vh - 3em) auto 0;
-	}
+.home-page-cards {
+  position: relative;
+  top: -50px;
+	width: 95%;
+	display: flex;
+	margin: 0 auto;
+	flex-wrap: wrap;
+	margin-bottom: -50px;
+}
 
+.home-page-card {
+  background: #fff;
+  width: calc(33.333% - 1em);
+  margin: 0 .5em;
+  box-sizing: border-box;
+  padding: .5em;
+  border-radius: 2px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+	color: #333;
+}
+
+.card-container img {
+	height: 100px;
+  min-width: 100px;
+	width: 100px;
+  display: block;
+	object-fit: cover;
+	overflow: hidden;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.card-container div {
+	padding-left: 1em;
+}
+
+.card-container div h2 {
+	padding: 0;
+	margin: 0;
+	text-align: left;
+}
+
+.card-container div > p {
+	display: block;
+	font-weight: 300;
+}
+
+.homepage-second-jumbo {
+  width: 100%;
+  display: block;
+  height: 400px;
+  background-size: cover;
+  background-position: center center;
+	color: #fff;
+}
+
+.homepage-second-jumbo .dark {
+	width: 100%;
+  display: block;
+  height: 400px;
+	overflow: hidden;
+	background: rgba(0,0,0,0.5);
+	box-sizing: border-box;
+	padding: 1em;
+	padding-left: 3em;
+}
+
+.homepage-second-jumbo h2 {
+	color: #fff;
+	text-align: left;
+	font-weight: 800;
+}
+
+.homepage-second-jumbo p {
+	font-size: 1.4em;
+	line-height: 1.5;
+	font-weight: 300;
+	max-width: 500px;
+}
+
+@media screen and (max-width: 960px) {
 	.homepage-content-zone h1 {
-		font-size: 4em;
+		font-size: 2.5em;
 	}
 
 	.homepage-slogan span {
 		width: 75%;
 		font-size: 1.2em;
 	}
-}
 
-@media screen and (max-width: 640px) {
-	.homepage-content-zone {
-		margin: calc(40vh - 3em) auto 0;
+	.home-page-card {
+		width: 100%;
+		margin: .5em 0;
 	}
 
-	.homepage-content-zone h1 {
-		font-size: 2em;
-	}
+	.homepage-second-jumbo .dark { padding-left: 1em;}
 }
