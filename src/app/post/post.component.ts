@@ -101,7 +101,23 @@ export class PostComponent implements OnInit {
 							this.pageData.callToAction.label = 'Sign Up';
 							this.pageData.callToAction.uri = data.registrationLink;
 						}
+
+						if (data.inlineAction) {
+							this.pageData.inlineAction.internalUrl = data.inlineAction.internalUrl;
+							this.pageData.inlineAction.externalUrl = data.inlineAction.externalUrl;
+							this.pageData.inlineAction.label = data.inlineAction.label;
+						}
+
 						this.hasDetails = true;
+
+						this.title.setTitle(data.title);
+						this.meta.addTags([
+							{ property: 'og:url', content: `https://flatlandchurch.com/blog/${data.permalink}` },
+							{ name: 'twitter:title', content: data.title },
+							{ property: 'og:title', content: data.title },
+							{ property: 'place:location:latitude', content: '41.3039152' },
+							{ property: 'place:location:longitude', content: '-96.1377482' }
+						]);
 
 						const childCareString = data.details && data.details.children ? 'Childcare is available' : 'No childcare available';
 						this.pageDetails = [
@@ -125,6 +141,15 @@ export class PostComponent implements OnInit {
 						}
 
 						this.hasDetails = true;
+
+						this.title.setTitle(data.title);
+						this.meta.addTags([
+							{ property: 'og:url', content: `https://flatlandchurch.com/blog/${data.permalink}` },
+							{ name: 'twitter:title', content: data.title },
+							{ property: 'og:title', content: data.title },
+							{ property: 'place:location:latitude', content: '41.3039152' },
+							{ property: 'place:location:longitude', content: '-96.1377482' }
+						]);
 
 						const childCareString = data.details && data.details.children ? 'Childcare is available' : 'No childcare available';
 						const scheduleString = `${this.parseWeekday(data.schedule.day)} @ ${this.getTimes(data.schedule)}`;
