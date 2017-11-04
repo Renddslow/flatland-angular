@@ -75,7 +75,37 @@
 	color: #555;
 }
 
+.empty-state {
+    width: 80%;
+    margin: 3em auto;
+    display: block;
+}
+
+.empty-state i.material-icons {
+    color: rgba(0,0,0,0.3);
+    font-size: 4em;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+}
+
+.empty-state h3 {
+    color: rgba(0,0,0,0.4);
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
+.empty-state p {
+    color: #333;
+    margin-top: 1em;
+}
+
 @media screen and (max-width: 640px) {
+	.empty-state {
+			width: 95%;
+	}
+
 	.card-container {
 		display: block;
 		overflow: hidden;

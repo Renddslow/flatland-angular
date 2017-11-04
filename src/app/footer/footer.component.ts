@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-footer',
@@ -37,17 +38,21 @@ export class FooterComponent implements OnInit {
 		social: [
 			{
 				uri: "https://www.facebook.com/flatlandchurchomaha",
-				icon: "fa-facebook-official"
+				icon: "fa-facebook-official",
+				label: "Facebook"
 			},
 			{
 				uri: "https://twitter.com/FlatlandChurch",
-				icon: "fa-twitter"
+				icon: "fa-twitter",
+				label: "Twitter"
 			},
 			{
 				uri: "https://www.instagram.com/flatlandchurch/",
-				icon: "fa-instagram"
+				icon: "fa-instagram",
+				label: "Instagram"
 			}
-		]
+		],
+		year: moment().format('YYYY')
 	}
 
   constructor() { }

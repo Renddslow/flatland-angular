@@ -1,0 +1,86 @@
+.fab {
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+	position: fixed;
+	bottom: 24px;
+	right: 24px;
+	appearance: none;
+	-webkit-appearance: none;
+	border: 0;
+	background: #048BA8;
+	outline: none;
+	-webkit-transition-duration: 0.25s;
+  -webkit-transition-duration: 0.25s;
+  -moz-transition-duration: 0.25s;
+  -o-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+  -webkit-transition-property: background-color,-webkit-box-shadow;
+	transition-property: background-color,box-shadow;
+  z-index: 25;
+	cursor: pointer;
+	box-shadow: 0px 2px 10px rgba(0,0,0,.3),
+							0px 0px 1px rgba(0,0,0,.1),
+							inset 0px 1px 0px rgba(255,255,255,.25),
+							inset 0px -1px 0px rgba(0,0,0,.15);
+	color: #fff;
+	transition: bottom .3s ease-out;
+	-webkit-transition: bottom .3s ease-out;
+}
+
+.fab.footer {
+	bottom: 190px;
+}
+
+.fab:hover {
+	box-shadow: 0px 5px 5px rgba(0,0,0,.2),
+							0px 10px 14px rgba(0,0,0,.1),
+							inset 0px 1px 0px rgba(255,255,255,.25),
+							inset 0px -1px 0px rgba(0,0,0,.10);
+	background: #09a7c6;
+}
+
+.comm-modal {
+	background: #fff;
+  border-radius: 2px;
+  display: inline-block;
+  position: fixed;
+	z-index: 1000;
+  width: 95%;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25),
+							0 10px 10px rgba(0,0,0,0.22);
+	top: 134px;
+	left: 2.5%;
+	height: calc(100vh - 200px);
+	overflow-y: scroll;
+}
+
+.modal-header {
+	width: 100%;
+	display: flex;
+}
+
+.modal-header h2 {
+	margin: 8px 16px;
+}
+
+.spacer {
+	flex: 1 1 auto;
+}
+
+.modal-header i {
+	cursor: pointer;
+	margin: 16px;
+	color: rgba(0,0,0,0.54);
+}
+
+.chat_bubble {
+	color: #fff !important;
+}
+
+@media screen and (min-width: 960px) {
+	.comm-modal {
+		width: 50%;
+		left: 25%;
+	}
+}

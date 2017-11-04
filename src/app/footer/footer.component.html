@@ -1,4 +1,20 @@
 <footer>
-	<footer-nav [navigation]="footer.navigation"></footer-nav>
-	<footer-social [socialLinks]="footer.social"></footer-social>
+	<div class="footer-container">
+		<div class="footer-column">
+			<p>4801 N 144th Street, Omaha, NE 68116 <span class="mobile-hide">|</span> <span class="mobile-break"><a href="tel:+14024929111">(402) 492-9111</a></span></p>
+			<p>&copy; {{footer.year}} Flatland Group. All Rights Reserved. <span class="mobile-break"><a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Use</a></span></p>
+		</div>
+		<div class="spacer"></div>
+		<div class="footer-column">
+			<ul>
+				<li *ngFor="let navItem of footer.navigation"><a [routerLink]="[navItem.uri]">{{ navItem.label }}</a></li>
+				<li><a href="https://flatlandchurch.com/radio">Radio</a></li>
+			</ul>
+			<ul>
+				<li *ngFor="let link of footer.social">
+					<a href="{{ link.uri }}" class="social-link"><i class="fa {{ link.icon }}"></i> {{ link.label }}</a>
+				</li>
+			</ul>
+		</div>
+	</div>
 </footer>

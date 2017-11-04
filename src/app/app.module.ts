@@ -14,8 +14,6 @@ import { HeaderMobileHamburgerComponent } from './header/header-mobile-hamburger
 import { HomepageComponent } from './homepage/homepage.component';
 import { PageComponent } from './page/page.component';
 import { FooterComponent } from './footer/footer.component';
-import { FooterSocialComponent } from './footer/footer-social/footer-social.component';
-import { FooterNavComponent } from './footer/footer-nav/footer-nav.component';
 import { PageStackComponent } from './page/page-stack/page-stack.component';
 import { PageLocationComponent } from './page/page-location/page-location.component';
 import { PageListComponent } from './page/page-list/page-list.component';
@@ -27,6 +25,7 @@ import { BrowseComponent } from './browse/browse.component';
 import { VideoComponent } from './video/video.component';
 import { ShareComponent } from './video/share/share.component';
 import { PageImageStackComponent } from './page/page-image-stack/page-image-stack.component';
+import { CommunicationComponent } from './communication/communication.component';
 
 const appRoutes: Routes = [
 	{ path: '', component: HomepageComponent },
@@ -52,8 +51,6 @@ const appRoutes: Routes = [
     HomepageComponent,
     PageComponent,
     FooterComponent,
-    FooterSocialComponent,
-    FooterNavComponent,
     PageStackComponent,
     PageLocationComponent,
     PageListComponent,
@@ -64,7 +61,8 @@ const appRoutes: Routes = [
     BrowseComponent,
     VideoComponent,
     ShareComponent,
-    PageImageStackComponent
+    PageImageStackComponent,
+    CommunicationComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'flatland-v2'}),
