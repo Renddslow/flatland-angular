@@ -12,7 +12,7 @@
 				<div class="video-details flex-item">
 					<span id="video-type">Sermons</span>
 					<h1>{{ sermon['title'] }}</h1>
-					<p>{{ sermon['series']['title'] }}</p>
+					<p><a [routerLink]="['/series/', sermon['series']['permalink']]">{{ sermon['series']['title'] }}</a></p>
 					<span>{{ sermon['speaker']['name'] }}</span>
 					<span id="date">{{ sermon['preached'] }}</span>
 					<p>{{ sermon['description'] || sermon['series']['description'] }}</p>

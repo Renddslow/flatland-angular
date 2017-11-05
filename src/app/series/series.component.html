@@ -1,0 +1,25 @@
+<div class="page">
+	<div class="page-background" [ngStyle]="{'background-image': 'url(' + series['image'] + ')'}">
+		<h1>{{ series['title'] }}</h1>
+		<div class="gradient"></div>
+	</div>
+	<div class="page-card">
+		<div class="page-component">
+			<div class="fc-stack">
+				<div class="fc-stack-item">
+					<div [innerHtml]="toMarkdown(series['description'])"></div>
+				</div>
+			</div>
+			<h2>Sermons from This Series</h2>
+			<div class="card-container">
+				<a *ngFor="let sermon of series['sermons']" class="image-card" [routerLink]="['/watch', sermon['permalink']]">
+					<div class="card-image video" [ngStyle]="{'background-image': 'url(' + sermon['image'] + ')'}"></div>
+					<div class="card-meta video">
+						<h2>{{ sermon['title'] }}</h2>
+						<span *ngIf="sermon['series']">{{ sermon['series']['title'] }}</span>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

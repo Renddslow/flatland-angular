@@ -26,6 +26,7 @@ import { VideoComponent } from './video/video.component';
 import { ShareComponent } from './video/share/share.component';
 import { PageImageStackComponent } from './page/page-image-stack/page-image-stack.component';
 import { CommunicationComponent } from './communication/communication.component';
+import { SeriesComponent } from './series/series.component';
 
 const appRoutes: Routes = [
 	{ path: '', component: HomepageComponent },
@@ -35,6 +36,7 @@ const appRoutes: Routes = [
 	{ path: 'move/groups/:permalink', component: PostComponent },
 	{ path: 'watch', component: BrowseComponent },
 	{ path: 'watch/:permalink', component: VideoComponent },
+	{ path: 'series/:permalink', component: SeriesComponent },
 	{ path: ':permalink', component: PageComponent },
 	{ path: ':parent/:permalink', component: PageComponent },
 ];
@@ -62,7 +64,8 @@ const appRoutes: Routes = [
     VideoComponent,
     ShareComponent,
     PageImageStackComponent,
-    CommunicationComponent
+    CommunicationComponent,
+    SeriesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'flatland-v2'}),
