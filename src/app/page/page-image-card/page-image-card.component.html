@@ -1,4 +1,4 @@
-<div class="empty-state" *ngIf="!events.length">
+<div class="empty-state" *ngIf="type == 'enjoy' && !events.length">
 	<i class="material-icons" *ngIf="type == 'enjoy'">today</i>
 	<h3>No events yet</h3>
 	<p>Don't worry, I'm sure you just caught us on an off week. Check back again soon for a full listing of upcoming events, or check out our full calendar above.</p>
