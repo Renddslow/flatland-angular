@@ -3,6 +3,7 @@ import { Http, Response } from '@angular/http';
 import { ActivatedRoute, Router, NavigationEnd  } from '@angular/router';
 import { markdown } from 'markdown';
 import { Meta, Title } from "@angular/platform-browser";
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-post',
@@ -45,9 +46,10 @@ export class PostComponent implements OnInit {
     });
 		this.sub = this.route.params.subscribe(params => {
 			if (this.route.toString().includes("enjoy")) {
-				this.http.request(`https://api.flatlandchurch.com/v1/events/${params['permalink']}`)
+				this.http.request(`https://api.flatlandchurch.com/v2/events/${params['permalink']}?key=pk_e6afff4e5ad186e9ce389cc21c225`)
 					.subscribe((res: Response) => {
 						let data = res.json();
+						data.date = moment(data.startsAt * 1000).format('MMM D @ h:MM A');
 						// mapping
 						this.pageData.title = data.title;
 						if (data.link != "") {

@@ -9,7 +9,7 @@
 		<div class="card-image" [ngStyle]="{'background-image': 'url(' + event['image'] + ')'}"></div>
 		<div class="card-meta">
 			<h2>{{ event['title'] }}</h2>
-			<div class="tag" [ngStyle]="{'background': '#' + event['category']['color']}">{{ event['category']['name'] }}</div>
+			<div class="tag" [ngStyle]="{'background': '#' + event['category']['color']}">{{ event['category']['label'] }}</div>
 			<div class="date">{{ event['date'] }}</div>
 		</div>
 	</a>

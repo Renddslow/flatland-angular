@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Http, Response } from '@angular/http';
+import * as moment from 'moment';
 
 @Component({
   selector: 'page-image-card',
@@ -27,9 +28,13 @@ export class PageImageCardComponent implements OnInit {
 		} else if (this.type.includes("recommended")) {
 			this.getRecommendations(this.permalink);
 		} else if (this.type.includes("enjoy")) {
-			this.http.request(`https://api.flatlandchurch.com/v1/events/`)
+			this.http.request(`https://api.flatlandchurch.com/v2/events?key=pk_e6afff4e5ad186e9ce389cc21c225`)
 				.subscribe((res: Response) => {
-					this.events = this.events.concat(res.json()['events']);
+					const events = res.json().map(event => {
+						event.date = moment(event.startsAt * 1000).format('MMMM D');
+						return event;
+					});
+					this.events = events;
 				});
 		} else if (this.type.includes("blog")) {
 			this.getBlogPosts();
