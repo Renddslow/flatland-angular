@@ -28,6 +28,14 @@ export class PostComponent implements OnInit {
 			internalUrl: null,
 			externalUrl: null,
 			label: null
+		},
+		ad: {
+			image: null,
+			action: {
+				label: null,
+				uri: null
+			},
+			title: null
 		}
 	};
 
@@ -78,19 +86,14 @@ export class PostComponent implements OnInit {
 			} else if (this.route.toString().includes("blog")) {
 				this.http.request(`https://api.flatlandchurch.com/v1/blog/post/${params['permalink']}`)
 					.subscribe((res: Response) => {
-						let data = res.json();
-						this.pageData.title = data.title;
-						this.pageData.jumbotronImage = data.image;
-						this.pageData.content = data.text;
-						this.pageData.metaFields = [data.author, data.date_published];
-						this.title.setTitle(data.title);
-						this.meta.addTags([
-							{ property: 'og:url', content: `https://flatlandchurch.com/blog/${data.permalink}` },
-							{ name: 'twitter:title', content: data.title },
-							{ property: 'og:title', content: data.title },
-							{ property: 'place:location:latitude', content: '41.3039152' },
-							{ property: 'place:location:longitude', content: '-96.1377482' }
-						]);
+						console.log('stuff')
+						this.assignBlogData(res.json(), 'v1', params['permalink']);
+					}, (err) => {
+						this.http.request(`https://api.flatlandchurch.com/v2/blog/${params['permalink']}?key=pk_e6afff4e5ad186e9ce389cc21c225`)
+							.subscribe((res: Response) => {
+								console.log('things')
+								this.assignBlogData(res.json(), 'v2', params['permalink']);
+							});
 					});
 			} else if (this.route.toString().includes("classes")) {
 				this.http.request(`https://api.flatlandchurch.com/v2/classes/${params['permalink']}?key=pk_e6afff4e5ad186e9ce389cc21c225`)
@@ -234,6 +237,27 @@ export class PostComponent implements OnInit {
 		} else {
 			return `Age Range: ${ageArray[0]}+`;
 		}
+	}
+
+	assignBlogData = (data, version, permalink) => {
+		this.pageData.title = data.title;
+		this.pageData.jumbotronImage = data.image;
+		this.pageData.content = version === 'v1' ? data.text : data.content;
+		this.pageData.metaFields = [
+			version === 'v1' ? data.author : data.author.name,
+			version === 'v1' ? data.date_published : moment(data.date * 1000).format('MMMM D, YYYY')
+		];
+
+		this.pageData.ad = data.actionComponent;
+
+		this.title.setTitle(data.title);
+		this.meta.addTags([
+			{ property: 'og:url', content: `https://flatlandchurch.com/blog/${permalink}` },
+			{ name: 'twitter:title', content: data.title },
+			{ property: 'og:title', content: data.title },
+			{ property: 'place:location:latitude', content: '41.3039152' },
+			{ property: 'place:location:longitude', content: '-96.1377482' }
+		]);
 	}
 
 }

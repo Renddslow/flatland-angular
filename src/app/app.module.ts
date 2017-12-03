@@ -27,6 +27,7 @@ import { ShareComponent } from './video/share/share.component';
 import { PageImageStackComponent } from './page/page-image-stack/page-image-stack.component';
 import { CommunicationComponent } from './communication/communication.component';
 import { SeriesComponent } from './series/series.component';
+import { PostActionComponentComponent } from './post-action-component/post-action-component.component';
 
 const appRoutes: Routes = [
 	{ path: '', component: HomepageComponent },
@@ -65,7 +66,8 @@ const appRoutes: Routes = [
     ShareComponent,
     PageImageStackComponent,
     CommunicationComponent,
-    SeriesComponent
+    SeriesComponent,
+    PostActionComponentComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'flatland-v2'}),

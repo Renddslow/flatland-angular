@@ -1,0 +1,4 @@
+<div class="internal-ad" [ngStyle]="{ 'background-image': 'url(' + ad.image + ')' }">
+	<h3>{{ ad.title }}</h3>
+	<a *ngIf="ad.action" [href]="ad.action.uri">{{ ad.action.label }}</a>
+</div>

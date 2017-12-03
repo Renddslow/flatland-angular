@@ -1,4 +1,4 @@
-<div class="page">
+<div class="page" *ngIf="pageData.title">
 	<div class="page-background" [ngStyle]="{ 'background': pageData.color, 'background-image': 'url(' + pageData.jumbotronImage + ')'}">
 		<h1>{{ pageData.title }}</h1>
 		<div class="gradient"></div>
@@ -20,5 +20,7 @@
 		</div>
 		<a class="cta" *ngIf="pageData.inlineAction && pageData.inlineAction.internalUrl" [href]="pageData.inlineAction.internalUrl">{{ pageData.inlineAction.label }}</a>
 		<a class="cta" *ngIf="pageData.inlineAction && pageData.inlineAction.externalUrl" [href]="pageData.inlineAction.externalUrl">{{ pageData.inlineAction.label }}</a>
+
+		<post-action-component *ngIf="pageData.ad && pageData.ad.title" [ad]="pageData.ad"></post-action-component>
 	</div>
 </div>

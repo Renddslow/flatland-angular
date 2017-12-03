@@ -10,7 +10,11 @@
 ul {
 	width: 85%;
 	margin: 0 auto;
-	padding-left: 2em;
+	/*padding-left: 2em;*/
 	display: block;
 	box-sizing: border-box;
+}
+
+ul li {
+	margin: 0 .5em;
 }

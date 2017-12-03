@@ -1,0 +1,24 @@
+.internal-ad {
+    box-sizing: border-box;
+    background-size: cover;
+    padding: .5em;
+    color: #fff;
+    text-align: center;
+    width: 85%;
+    margin: 0 auto;
+}
+
+.internal-ad h3 {
+    font-size: 1.75em;
+    padding-top: .5em;
+}
+
+.internal-ad a {
+    display: block;
+    padding: 1em 0;
+    background: #fff;
+    width: 200px;
+    margin: .5em auto;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+}
