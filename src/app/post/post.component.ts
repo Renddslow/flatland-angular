@@ -57,7 +57,7 @@ export class PostComponent implements OnInit {
 				this.http.request(`https://api.flatlandchurch.com/v2/events/${params['permalink']}?key=pk_e6afff4e5ad186e9ce389cc21c225`)
 					.subscribe((res: Response) => {
 						let data = res.json();
-						data.date = moment(data.startsAt * 1000).format('MMM D @ h:MM A');
+						data.date = moment(data.startsAt * 1000).format('MMM D @ h:mm A');
 						// mapping
 						this.pageData.title = data.title;
 						if (data.link != "") {
