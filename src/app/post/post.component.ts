@@ -36,10 +36,12 @@ export class PostComponent implements OnInit {
 				uri: null
 			},
 			title: null
-		}
+		},
+		dates: null
 	};
 
 	hasDetails = false;
+	hasDates = false;
 
 	pageDetails = [];
 
@@ -114,6 +116,22 @@ export class PostComponent implements OnInit {
 							this.pageData.inlineAction.label = data.inlineAction.label;
 						}
 
+						if (data.dates) {
+							this.pageData.dates = Object.keys(data.dates)
+								.filter(key => {
+									return moment().subtract(2, 'weeks').unix() < data.dates[key]['start'];
+								})
+								.map(key => {
+									const date = data.dates[key];
+									date['start'] = moment(date['start'] * 1000).format('MMM D, YYYY');
+									if (date['end']) {
+										date['end'] = moment(date['end'] * 1000).format('MMM D, YYYY');
+									}
+									return date;
+								});
+							this.hasDates = true;
+						}
+
 						this.hasDetails = true;
 
 						this.title.setTitle(data.title);
@@ -127,8 +145,6 @@ export class PostComponent implements OnInit {
 
 						const childCareString = data.details && data.details.children ? 'Childcare is available' : 'No childcare available';
 						this.pageDetails = [
-							this.parseLocation(data.location),
-							`${this.parseWeekday(data.schedule.day)} @ ${this.getTimes(data.schedule)}`,
 							childCareString
 						];
 					});

@@ -17,13 +17,13 @@ export class HomepageComponent implements OnInit {
 	homeCards = [];
 
   constructor(private http: Http, private router: Router, private route: ActivatedRoute, private meta: Meta, private title: Title) {
-		title.setTitle('Welcome to Flatland Church');
+		title.setTitle('Flatland Church Omaha');
 		meta.addTags([
 			{ name: 'description', content: 'Located on 144th between Maple and Fort, Flatland Church is all about moving people closer to the center of God\'s kingdom' },
 			{ property: 'og:url', content: 'https://flatlandchurch.com/' },
-			{ name: 'twitter:title', content: 'Welcome to Flatland Church' },
+			{ name: 'twitter:title', content: 'Welcome to Flatland Church Omaha' },
 			{ name: 'twitter:description', content: 'Located on 144th between Maple and Fort, Flatland Church is all about moving people closer to the center of God\'s kingdom' },
-			{ property: 'og:title', content: 'Welcome to Flatland Church' },
+			{ property: 'og:title', content: 'Welcome to Flatland Church Omaha' },
 			{ property: 'place:location:latitude', content: '41.3039152' },
 			{ property: 'place:location:longitude', content: '-96.1377482' }
 		]);

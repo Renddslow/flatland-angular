@@ -1,0 +1,34 @@
+.post-card {
+	width: 95%;
+	display: flex;
+	margin: 1em auto;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+	border-radius: 2px;
+	align-items: center;
+}
+
+.spacer {
+		flex: 1 1 auto;
+}
+
+.column {
+	padding: 12px 8px;
+}
+
+.column-cta {
+	width: 33%;
+}
+
+h3 {
+	font-weight: normal;
+}
+
+@media screen and (min-width: 640px) {
+	.column {
+		padding: 12px;
+	}
+
+	.column-cta {
+		width: 25%;
+	}
+}

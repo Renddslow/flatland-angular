@@ -28,6 +28,7 @@ import { PageImageStackComponent } from './page/page-image-stack/page-image-stac
 import { CommunicationComponent } from './communication/communication.component';
 import { SeriesComponent } from './series/series.component';
 import { PostActionComponentComponent } from './post-action-component/post-action-component.component';
+import { PostDatesComponent } from './post/post-dates/post-dates.component';
 
 const appRoutes: Routes = [
 	{ path: '', component: HomepageComponent },
@@ -67,7 +68,8 @@ const appRoutes: Routes = [
     PageImageStackComponent,
     CommunicationComponent,
     SeriesComponent,
-    PostActionComponentComponent
+    PostActionComponentComponent,
+    PostDatesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'flatland-v2'}),

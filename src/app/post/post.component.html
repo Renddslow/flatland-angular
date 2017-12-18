@@ -18,6 +18,8 @@
 				<li *ngFor="let details of pageDetails"><span [innerHtml]="details"></span></li>
 			</ul>
 		</div>
+
+		<post-dates *ngIf="hasDates" [dates]="pageData.dates"></post-dates>
 		<a class="cta" *ngIf="pageData.inlineAction && pageData.inlineAction.internalUrl" [href]="pageData.inlineAction.internalUrl">{{ pageData.inlineAction.label }}</a>
 		<a class="cta" *ngIf="pageData.inlineAction && pageData.inlineAction.externalUrl" [href]="pageData.inlineAction.externalUrl">{{ pageData.inlineAction.label }}</a>
 
