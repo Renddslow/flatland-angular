@@ -139,8 +139,10 @@ export class PostComponent implements OnInit {
 						]);
 
 						const childCareString = data.details && data.details.children ? 'Childcare is available' : 'No childcare available';
+						const costString = data.details && data.details.cost ? `$${data.details.cost}` : 'Free';
 						this.pageDetails = [
-							childCareString
+							childCareString,
+							costString
 						];
 					});
 			} else if (this.route.toString().includes('groups')) {
