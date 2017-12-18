@@ -105,15 +105,10 @@ export class PostComponent implements OnInit {
 						this.pageData.title = data.title;
 						this.pageData.jumbotronImage = data.jumbotron || data.image;
 						this.pageData.content = data.description;
+
 						if (!data.registrationClosed) {
 							this.pageData.callToAction.label = 'Sign Up';
 							this.pageData.callToAction.uri = data.registrationLink;
-						}
-
-						if (data.inlineAction) {
-							this.pageData.inlineAction.internalUrl = data.inlineAction.internalUrl;
-							this.pageData.inlineAction.externalUrl = data.inlineAction.externalUrl;
-							this.pageData.inlineAction.label = data.inlineAction.label;
 						}
 
 						if (data.dates) {
