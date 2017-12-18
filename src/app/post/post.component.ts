@@ -60,13 +60,14 @@ export class PostComponent implements OnInit {
 						data.date = moment(data.startsAt * 1000).format('MMM D @ h:mm A');
 						// mapping
 						this.pageData.title = data.title;
-						if (data.link != "") {
-							this.pageData.callToAction.label = "Register";
-							this.pageData.callToAction.uri = data.link;
-						}
 						this.pageData.metaFields = [data.location, data.date];
 						if (data.price != "Free") {
 							this.pageData.metaFields.push(data.price);
+						}
+						if (data.inlineAction) {
+							this.pageData.inlineAction.internalUrl = data.inlineAction.internalUrl;
+							this.pageData.inlineAction.externalUrl = data.inlineAction.externalUrl;
+							this.pageData.inlineAction.label = data.inlineAction.label;
 						}
 						this.pageData.content = data.description;
 						this.pageData.jumbotronImage = data.image;
