@@ -1,4 +1,6 @@
-# FlatlandV2
+# Flatland Church Website
+
+[![StackShare](https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/flatland-church/flatland-church)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.7.
 
