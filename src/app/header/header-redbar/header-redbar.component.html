@@ -1,0 +1,3 @@
+<div class="redbar" [ngClass]="{ 'red': bar['type'] === 'emergency', 'blue': bar['type'] === 'notification' }">
+	<p>{{ bar['title'] }} <a *ngIf="bar['action']" [href]="bar['action']['uri']">{{ bar['action']['label'] }}</a></p>
+</div>

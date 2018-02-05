@@ -41,7 +41,6 @@ export class PageImageCardComponent implements OnInit {
 		} else if (this.type.includes('classes')) {
 			this.getClasses();
 		} else if (this.type.includes('groups')) {
-			console.log('hello')
 			this.getGroups();
 		}
   }
@@ -92,6 +91,7 @@ export class PageImageCardComponent implements OnInit {
 		this.http.request(`https://api.flatlandchurch.com/v2/groups?key=pk_e6afff4e5ad186e9ce389cc21c225`)
 			.subscribe((res: Response) => {
 				this.groups = res.json();
+				console.log(this.groups)
 			});
 	}
 

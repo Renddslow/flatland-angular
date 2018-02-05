@@ -19,7 +19,10 @@ app.engine('html', (_, options, callback) => {
   const opts = { document: template, url: options.req.url };
 
   renderModuleFactory(AppServerModuleNgFactory, opts)
-    .then(html => callback(null, html));
+    .then(html => callback(null, html))
+		.catch(err => {
+			console.log(err)
+		});
 });
 
 app.set('view engine', 'html');

@@ -11,6 +11,7 @@ import { HeaderLogoComponent } from './header/header-logo/header-logo.component'
 import { HeaderNavComponent } from './header/header-nav/header-nav.component';
 import { HeaderMobileMenuComponent } from './header/header-mobile-menu/header-mobile-menu.component';
 import { HeaderMobileHamburgerComponent } from './header/header-mobile-hamburger/header-mobile-hamburger.component';
+import { HeaderRedbarComponent } from './header/header-redbar/header-redbar.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { PageComponent } from './page/page.component';
 import { FooterComponent } from './footer/footer.component';
@@ -52,6 +53,7 @@ const appRoutes: Routes = [
     HeaderNavComponent,
     HeaderMobileMenuComponent,
     HeaderMobileHamburgerComponent,
+		HeaderRedbarComponent,
     HomepageComponent,
     PageComponent,
     FooterComponent,

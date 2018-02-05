@@ -1,0 +1,22 @@
+.redbar {
+	width: 100%;
+	display: block;
+	text-align: center;
+	box-sizing: border-box;
+	padding: 12px 0 16px;
+	color: #fff !important;
+}
+
+.redbar.red {
+	background: #D91E18;
+}
+
+.redbar.blue {
+	background: #048BA8;
+}
+
+.redbar.red a,
+.redbar.blue a {
+	color: #fff;
+	text-decoration: underline;
+}

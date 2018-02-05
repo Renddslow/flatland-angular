@@ -89,12 +89,10 @@ export class PostComponent implements OnInit {
 			} else if (this.route.toString().includes("blog")) {
 				this.http.request(`https://api.flatlandchurch.com/v1/blog/post/${params['permalink']}`)
 					.subscribe((res: Response) => {
-						console.log('stuff')
 						this.assignBlogData(res.json(), 'v1', params['permalink']);
 					}, (err) => {
 						this.http.request(`https://api.flatlandchurch.com/v2/blog/${params['permalink']}?key=pk_e6afff4e5ad186e9ce389cc21c225`)
 							.subscribe((res: Response) => {
-								console.log('things')
 								this.assignBlogData(res.json(), 'v2', params['permalink']);
 							});
 					});
@@ -131,7 +129,7 @@ export class PostComponent implements OnInit {
 
 						this.title.setTitle(data.title);
 						this.meta.addTags([
-							{ property: 'og:url', content: `https://flatlandchurch.com/blog/${data.permalink}` },
+							{ property: 'og:url', content: `https://flatlandchurch.com/classes/${data.permalink}` },
 							{ name: 'twitter:title', content: data.title },
 							{ property: 'og:title', content: data.title },
 							{ property: 'place:location:latitude', content: '41.3039152' },
@@ -171,11 +169,9 @@ export class PostComponent implements OnInit {
 						]);
 
 						const childCareString = data.details && data.details.children ? 'Childcare is available' : 'No childcare available';
-						const scheduleString = `${this.parseWeekday(data.schedule.day)} @ ${this.getTimes(data.schedule)}`;
 
 						this.pageDetails = [
-							this.parseLocation(data.location),
-							scheduleString,
+							data.schedule.display,
 							this.getAgeRange(data.details.ageRange),
 							this.getGenderString(data.details.gender),
 							childCareString
@@ -206,14 +202,6 @@ export class PostComponent implements OnInit {
 		}
 		return `${firstNumber}:${timeArr[1]}${meridian}`;
 	};
-
-	parseLocation = location => {
-		if (typeof location === 'string') {
-			return `Location: ${location}`;
-		}
-		const streetAddress = location.addressOne.replace(' ', '+');
-		return `Location: <a class="underline" href="https://www.google.com/maps/place/${streetAddress},+${location.city},+${location.state}+${location.zipCode}">${location.name}</a>`
-	}
 
 	parseWeekday = day => {
 		switch(day) {

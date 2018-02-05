@@ -35,7 +35,7 @@ export class VideoComponent implements OnInit {
 					this.sermon = res.json();
 					this.sermon['videoURI'] = this.sanitizer.bypassSecurityTrustResourceUrl(`https://player.vimeo.com/video/${this.sermon['vimeoId']}`);
 					this.sermon['permalink'] = this.permalink;
-					this.sermon['preached'] = moment(this.sermon['preached'] * 1000).tz('America/Chicago').format('MMMM D')
+					this.sermon['preached'] = moment(this.sermon['preached'] * 1000).tz('America/Chicago').format('MMMM D');
 					this.title.setTitle(this.sermon['title'] + '| Flatland Church');
 					this.meta.addTags([
 						{ name: 'description', content: this.sermon['description'] },

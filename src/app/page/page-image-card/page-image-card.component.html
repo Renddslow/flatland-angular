@@ -52,6 +52,7 @@
 		<div class="card-image video" *ngIf="group['color'] && !group['image']" [ngStyle]="{'background': group['color']}"></div>
 		<div class="card-meta video">
 			<h2>{{ group['title'] }}</h2>
+			<p>Meets {{ group['schedule']['display'] }}</p>
 		</div>
 	</a>
 </div>
