@@ -38,12 +38,12 @@ export class VideoComponent implements OnInit {
 					this.sermon['preached'] = moment(this.sermon['preached'] * 1000).tz('America/Chicago').format('MMMM D');
 					this.title.setTitle(this.sermon['title'] + '| Flatland Church');
 					this.meta.addTags([
-						{ name: 'description', content: this.sermon['description'] },
+						{ name: 'description', content: this.sermon['description'] || this.sermon['series']['description'] || '' },
 						{ property: 'og:url', content: `https://flatlandchurch.com/watch/${this.sermon['permalink']}` },
-						{ property: 'og:image', content: this.sermon['image'] },
+						{ property: 'og:image', content: this.sermon['image'] || '' },
 						{ name: 'twitter:title', content: this.sermon['title'] },
-						{ name: 'twitter:description', content: this.sermon['description'] },
-						{ name: 'twitter:image', content: this.sermon['image'] },
+						{ name: 'twitter:description', content: this.sermon['description'] || this.sermon['series']['description'] || '' },
+						{ name: 'twitter:image', content: this.sermon['image'] || '' },
 						{ property: 'og:title', content: this.sermon['title'] },
 						{ property: 'place:location:latitude', content: '41.3039152' },
 						{ property: 'place:location:longitude', content: '-96.1377482' }
