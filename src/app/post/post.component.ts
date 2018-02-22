@@ -41,6 +41,10 @@ export class PostComponent implements OnInit {
 						this.pageData = Object.assign({}, pageData, data.pageData);
 						this.title.setTitle(data.pageData.title);
 						this.meta.addTags(data.metaTags);
+						window['fbq']('track', 'ViewContent', {
+						  content_type: 'product',
+              content_id: 'event'
+            });
 					});
 			} else if (this.route.toString().includes("blog")) {
 				getBlogPost(this.http, params['permalink'])
@@ -49,6 +53,10 @@ export class PostComponent implements OnInit {
 						this.pageData = Object.assign({}, this.pageData, data.pageData);
 						this.title.setTitle(data.pageData.title);
 						this.meta.addTags(data.metaTags);
+						window['fbq']('track', 'ViewContent', {
+						  content_type: 'product',
+              content_id: 'blog_post'
+            });
 					});
 			} else if (this.route.toString().includes("classes")) {
 				getClass(this.http, params['permalink'])
@@ -60,6 +68,10 @@ export class PostComponent implements OnInit {
 						this.title.setTitle(data.pageData.title);
 						this.meta.addTags(data.metaTags);
 						this.pageDetails = data.pageDetails;
+						window['fbq']('track', 'ViewContent', {
+						  content_type: 'product',
+              content_id: 'class'
+            });
 					});
 			} else if (this.route.toString().includes('groups')) {
 				getGroup(this.http, params['permalink'])
@@ -70,6 +82,10 @@ export class PostComponent implements OnInit {
 						this.title.setTitle(data.pageData.title);
 						this.meta.addTags(data.metaTags);
 						this.pageDetails = data.pageDetails;
+						window['fbq']('track', 'ViewContent', {
+						  content_type: 'product',
+              content_id: 'group'
+            });
 					});
 			}
 		});

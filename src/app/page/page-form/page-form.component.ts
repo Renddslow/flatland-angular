@@ -81,6 +81,7 @@ export class PageFormComponent implements OnInit {
 		this.http.post('https://api.flatlandchurch.com/v2/emails/visit?key=202f1c42-7054-46ee-8ca2-ddc85f9c789b', this.visitor)
 			.subscribe(res => {
 				this.showVisitThankYou = true;
+				window['fbx']('track', 'Lead');
 			});
 	}
 
