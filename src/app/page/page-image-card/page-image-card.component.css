@@ -26,6 +26,7 @@
   display: block;
   padding-bottom: 100%;
   background-size: cover;
+	background-position: center;
 }
 
 .card-image.video {

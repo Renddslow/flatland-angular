@@ -21,5 +21,6 @@ export const pageData = {
 		},
 		title: null
 	},
-	dates: null
+	dates: null,
+	tags: []
 };

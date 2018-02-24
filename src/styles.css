@@ -9,6 +9,10 @@ p > a {
   font-weight: 500;
 }
 
+p > br {
+	line-height: 3;
+}
+
 a {
 	color: #048BA8;
 }

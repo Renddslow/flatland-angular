@@ -41,6 +41,7 @@ const appRoutes: Routes = [
 	{ path: 'watch/:permalink', component: VideoComponent },
 	{ path: 'series/:permalink', component: SeriesComponent },
 	{ path: ':permalink', component: PageComponent },
+	{ path: ':permalink/topic/:topic', component: PageComponent },
 	{ path: ':parent/:permalink', component: PageComponent },
 ];
 

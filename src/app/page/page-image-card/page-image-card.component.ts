@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import * as moment from 'moment';
+import { startCase } from 'lodash';
 
 @Component({
   selector: 'page-image-card',
@@ -11,6 +12,7 @@ export class PageImageCardComponent implements OnInit {
 
 	@Input() type: string;
 	@Input() permalink?: string;
+	@Input() topic?: string;
 
 	sermons = [];
 	events = [];
@@ -19,6 +21,7 @@ export class PageImageCardComponent implements OnInit {
 	groups = [];
 
 	page: number = 0;
+	offset: number = 0;
 
   constructor(private http: Http) {}
 
@@ -36,8 +39,8 @@ export class PageImageCardComponent implements OnInit {
 					});
 					this.events = events;
 				});
-		} else if (this.type.includes("blog")) {
-			this.getBlogPosts();
+		} else if (this.type.includes('blog')) {
+			this.getBlogPosts(this.topic);
 		} else if (this.type.includes('classes')) {
 			this.getClasses();
 		} else if (this.type.includes('groups')) {
@@ -57,11 +60,22 @@ export class PageImageCardComponent implements OnInit {
 		}
 	}
 
-	getBlogPosts = () => {
-		this.http.request(`https://api.flatlandchurch.com/v1/blog/posts?page=${this.page}`)
+	getBlogPosts = (topic?) => {
+		const baseURL = `https://api.flatlandchurch.com/v2/blog?key=pk_e6afff4e5ad186e9ce389cc21c225`;
+		const url = topic
+			? `${baseURL}&filter[topic]=${topic}&page[offset]=${this.offset}`
+			: `${baseURL}&page[offset]=${this.offset}`;
+		this.http.request(url)
 			.subscribe((res: Response) => {
-				this.posts = this.posts.concat(res.json());
+				this.posts = this.posts.concat(res.json().map(p => ({
+					...p,
+					date: moment.unix(p.date).format('MMM D, YYYY'),
+					tags: Object.keys(p.topics)
+						.map(t => startCase(t))
+						.filter(t => t !== 'Legacy')
+				})));
 				this.page += 1;
+				this.offset = this.page * 12;
 			});
 	};
 

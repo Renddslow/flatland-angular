@@ -1,18 +1,21 @@
 import * as moment from 'moment';
+import { startCase } from 'lodash';
 
-export const getBlogPost = (http, permalink) => http.request(`https://api.flatlandchurch.com/v1/blog/post/${permalink}`);
+export const getBlogPost = (http, permalink) => http.request(`https://api.flatlandchurch.com/v2/blog/${permalink}?key=pk_e6afff4e5ad186e9ce389cc21c225`);
 
 export const handleBlogPost = (response, permalink) => {
 	const data = response.json();
 	const pageData = {
 		title: data.title,
 		jumbotronImage: data.image,
-		content: data.text,
+		content: data.content,
 		metaFields: [
-			data.author,
-			data.date_published
+			`by ${data.author.name}`
 		],
-		ad: data.actionComponent
+		ad: data.actionComponent,
+		tags: Object.keys(data.topics)
+			.map(t => startCase(t))
+			.filter(t => t !== 'Legacy')
 	};
 
 	const metaTags = [
@@ -23,5 +26,5 @@ export const handleBlogPost = (response, permalink) => {
 		{ property: 'place:location:longitude', content: '-96.1377482' }
 	];
 
-	return { pageData, metaTags };
+	return { pageData, metaTags, legacy: data.topics.legacy };
 };

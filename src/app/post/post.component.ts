@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { ActivatedRoute, Router, NavigationEnd  } from '@angular/router';
-import { markdown } from 'markdown';
+import * as marked from 'marked';
 import { Meta, Title } from '@angular/platform-browser';
 import * as moment from 'moment';
 
@@ -10,6 +10,18 @@ import { getEvent, handleEvent } from './post-data-handlers/enjoy';
 import { getClass, handleClass } from './post-data-handlers/classes';
 import { getGroup, handleGroup } from './post-data-handlers/group';
 import { getBlogPost, handleBlogPost } from './post-data-handlers/blog';
+
+marked.setOptions({
+  renderer: new marked.Renderer(),
+  gfm: true,
+  tables: true,
+  breaks: true,
+  pedantic: false,
+  sanitize: true,
+  smartLists: true,
+  smartypants: true,
+  xhtml: false
+});
 
 @Component({
   selector: 'app-post',
@@ -23,6 +35,7 @@ export class PostComponent implements OnInit {
 	hasDetails = false;
 	hasDates = false;
 	pageDetails = [];
+	legacy = false;
 
   constructor(private http: Http, private route: ActivatedRoute, private router: Router, private meta: Meta, private title: Title) { }
 
@@ -53,6 +66,7 @@ export class PostComponent implements OnInit {
 						this.pageData = Object.assign({}, this.pageData, data.pageData);
 						this.title.setTitle(data.pageData.title);
 						this.meta.addTags(data.metaTags);
+						this.legacy = data.legacy;
 						window['fbq']('track', 'ViewContent', {
 						  content_type: 'product',
               content_id: 'blog_post'
@@ -91,8 +105,11 @@ export class PostComponent implements OnInit {
 		});
   }
 
-	toMarkdown(content) {
-		return markdown.toHTML(content);
+	toMarkdown(content, legacy) {
+		if (legacy) {
+			return content;
+		}
+		return marked(content);
 	}
 
 }

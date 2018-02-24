@@ -13,6 +13,7 @@ export class PageComponent implements OnInit {
 	permalink: string;
 	page: {};
 	timeChange: string = null;
+	topic: string;
 
   constructor(private http: Http, private route: ActivatedRoute, private router: Router, private meta: Meta, private title: Title) {
 		this.page = {}
@@ -31,6 +32,9 @@ export class PageComponent implements OnInit {
 			if (params['parent']) {
 				this.permalink = `${params['parent']}/${params['permalink']}`
 			} else {
+				if (params['topic']) {
+					this.topic = params['topic'];
+				}
 				this.permalink = params['permalink'];
 			}
 			this.http.request(`${timeURI}`)
