@@ -48,7 +48,6 @@ export class PageComponent implements OnInit {
 				.subscribe((res: Response) => {
 					this.page = res.json();
 					if (this.page['message'] && this.page['message'] === 'Page does not exist') {
-						console.log('🔥');
 						this.router.navigate(['/404']);
 					}
 					this.title.setTitle(this.page['meta']['title'] + ' | Flatland Church');
