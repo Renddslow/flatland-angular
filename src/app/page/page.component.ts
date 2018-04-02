@@ -44,9 +44,13 @@ export class PageComponent implements OnInit {
 			let queryParams = {
 				key: 'pk_e6afff4e5ad186e9ce389cc21c225'
 			};
-			this.http.request(`${pageURI}${this.permalink}`, {params: queryParams})
+			this.http.request(`${pageURI}${this.permalink}`, { params: queryParams })
 				.subscribe((res: Response) => {
 					this.page = res.json();
+					if (this.page['message'] && this.page['message'] === 'Page does not exist') {
+						console.log('🔥');
+						this.router.navigate(['/404']);
+					}
 					this.title.setTitle(this.page['meta']['title'] + ' | Flatland Church');
 					this.meta.addTags([
 						{ name: 'description', content: this.page['meta']['description'] },
