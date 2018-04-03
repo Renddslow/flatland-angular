@@ -15,7 +15,7 @@ export class SeriesComponent implements OnInit {
 	sub: any;
 	permalink: string;
 
-  constructor(private http: Http, private route: ActivatedRoute, private title: Title, private meta: Meta) { }
+  constructor(private http: Http, private router: Router, private route: ActivatedRoute, private title: Title, private meta: Meta) { }
 
 	ngOnInit() {
 		this.sub = this.route.params.subscribe(params => {
@@ -23,6 +23,9 @@ export class SeriesComponent implements OnInit {
 			this.http.request(`https://api.flatlandchurch.com/v2/series/${params['permalink']}?key=pk_e6afff4e5ad186e9ce389cc21c225`)
 				.subscribe((res: Response) => {
 					this.series = res.json();
+					if (this.series['message'] && this.series['message'].includes('does not exist')) {
+						this.router.navigate(['404']);
+					}
 					this.title.setTitle(this.series['title'] + ' | Flatland Church');
 					this.meta.addTags([
 						{ name: 'description', content: this.series['description'] },

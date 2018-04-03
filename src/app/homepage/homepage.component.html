@@ -1,38 +1,40 @@
-<div class="homepage-jumbo" [ngStyle]="{'background-image': 'url(' + page['image'] + ')'}">
-	<div class="dark">
-		<div class="homepage-content-zone">
-			<h1>{{ page['callout'] }}</h1>
-			<a [routerLink]="[page['action']['internalUrl']]" *ngIf="page['action']">{{ page['action']['label'] }}</a>
-		</div>
-	</div>
-</div>
-<div class="home-page-cards" *ngIf="homeCards">
-	<a class="home-page-card" *ngFor="let card of homeCards" [routerLink]="card['internalUrl']">
-		<div class="card-container">
-			<img [src]="card['image']">
-			<div>
-				<h2>{{ card['title'] }}</h2>
-				<p>{{ card['description'] }}</p>
+<div *ngIf="page">
+	<div class="homepage-jumbo" [ngStyle]="{'background-image': 'url(' + page['image'] + ')'}">
+		<div class="dark">
+			<div class="homepage-content-zone">
+				<h1>{{ page['callout'] }}</h1>
+				<a [routerLink]="[page['action']['internalUrl']]" *ngIf="page['action']">{{ page['action']['label'] }}</a>
 			</div>
 		</div>
-	</a>
-</div>
-<div class="homepage-slogan">
-	<span [innerHtml]="toMarkdown(page['content'])"></span>
-</div>
-<div class="homepage-second-jumbo" [ngStyle]="{'background-image': 'url(' + page['secondJumbo']['image'] + ')'}">
-	<div class="dark">
-		<h2>{{ page['secondJumbo']['title'] }}</h2>
-		<p>{{ page['secondJumbo']['content'] }}</p>
-		<a
-			*ngIf="page['secondJumbo']['action'] && page['secondJumbo']['action']['internalUrl']" [routerLink]="[page['secondJumbo']['action']['internalUrl']]"
-			class="cta cta-light cta-left">
-			{{ page['secondJumbo']['action']['label'] }}
+	</div>
+	<div class="home-page-cards" *ngIf="homeCards">
+		<a class="home-page-card" *ngFor="let card of homeCards" [routerLink]="card['internalUrl']">
+			<div class="card-container">
+				<img [src]="card['image']">
+				<div>
+					<h2>{{ card['title'] }}</h2>
+					<p>{{ card['description'] }}</p>
+				</div>
+			</div>
 		</a>
-		<a
-			*ngIf="page['secondJumbo']['action'] && page['secondJumbo']['action']['externalUrl']" [routerLink]="[page['secondJumbo']['action']['externalUrl']]"
-			class="cta cta-light cta-left">
-			{{ page['secondJumbo']['action']['label'] }}
-		</a>
+	</div>
+	<div class="homepage-slogan">
+		<span [innerHtml]="toMarkdown(page['content'])"></span>
+	</div>
+	<div class="homepage-second-jumbo" [ngStyle]="{'background-image': 'url(' + page['secondJumbo']['image'] + ')'}">
+		<div class="dark">
+			<h2>{{ page['secondJumbo']['title'] }}</h2>
+			<p>{{ page['secondJumbo']['content'] }}</p>
+			<a
+				*ngIf="page['secondJumbo']['action'] && page['secondJumbo']['action']['internalUrl']" [routerLink]="[page['secondJumbo']['action']['internalUrl']]"
+				class="cta cta-light cta-left">
+				{{ page['secondJumbo']['action']['label'] }}
+			</a>
+			<a
+				*ngIf="page['secondJumbo']['action'] && page['secondJumbo']['action']['externalUrl']" [routerLink]="[page['secondJumbo']['action']['externalUrl']]"
+				class="cta cta-light cta-left">
+				{{ page['secondJumbo']['action']['label'] }}
+			</a>
+		</div>
 	</div>
 </div>

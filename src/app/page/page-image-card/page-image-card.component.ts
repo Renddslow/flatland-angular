@@ -52,8 +52,12 @@ export class PageImageCardComponent implements OnInit {
 		event.preventDefault();
 		switch(type) {
 			case "blog":
-				this.getBlogPosts();
-				history.pushState(null, null, `/blog?page=${this.page + 1}`);
+				this.getBlogPosts(this.topic);
+				if (this.topic) {
+					history.pushState(null, null, `/blog/topic/${this.topic}?page=${this.page + 1}`);
+				} else {
+					history.pushState(null, null, `/blog?page=${this.page + 1}`);
+				}
 				break;
 			case "watch":
 				this.getSermons();
