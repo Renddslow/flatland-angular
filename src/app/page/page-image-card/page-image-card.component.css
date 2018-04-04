@@ -103,6 +103,18 @@
     margin-top: 1em;
 }
 
+.card-container.move .image-card.double-wide {
+  width: calc(100% - 2em);
+}
+
+.image-card.double-wide .card-image.video {
+  padding-bottom: 33%
+}
+
+.tag.featured {
+  width: 20%;
+}
+
 @media screen and (max-width: 640px) {
 	.empty-state {
 			width: 95%;
@@ -152,4 +164,8 @@
 	.card-meta.video {
 		width: 65%;
 	}
+
+  .tag.featured {
+    width: 40%;
+  }
 }
