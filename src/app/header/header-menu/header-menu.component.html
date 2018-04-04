@@ -1,0 +1,19 @@
+<div class="menu">
+  <div class="flex-container">
+    <div class="mobile-only">
+      <ul>
+        <li *ngFor="let navItem of mobileNav">
+          <a [routerLink]="navItem['uri']">{{ navItem['label'] }}</a>
+        </li>
+      </ul>
+    </div>
+    <div *ngFor="let navColumn of navigation">
+      <h3>{{ navColumn['name'] }}</h3>
+      <ul>
+        <li *ngFor="let navItem of navColumn['items']">
+          <a [routerLink]="navItem['uri']">{{ navItem['label'] }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

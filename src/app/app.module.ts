@@ -30,6 +30,7 @@ import { CommunicationComponent } from './communication/communication.component'
 import { SeriesComponent } from './series/series.component';
 import { PostActionComponentComponent } from './post-action-component/post-action-component.component';
 import { PostDatesComponent } from './post/post-dates/post-dates.component';
+import { HeaderMenuComponent } from './header/header-menu/header-menu.component';
 
 const appRoutes: Routes = [
 	{ path: '', component: HomepageComponent },
@@ -72,7 +73,8 @@ const appRoutes: Routes = [
     CommunicationComponent,
     SeriesComponent,
     PostActionComponentComponent,
-    PostDatesComponent
+    PostDatesComponent,
+    HeaderMenuComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'flatland-v2'}),

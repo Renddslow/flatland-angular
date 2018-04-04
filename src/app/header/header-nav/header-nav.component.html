@@ -1,8 +1,17 @@
 <ul>
 	<li *ngFor="let navItem of navigation" class="header-nav-item">
 		<a [routerLink]="[navItem.uri]">
-			{{ navItem.mainLabel }}
-			<sub>{{ navItem.subLabel }}</sub>
+			{{ navItem.label }}
 		</a>
 	</li>
+  <li class="header-nav-item menu">
+    <a (click)="setMenuState()">
+      <span>Menu</span>
+      <div class="hamburger" [ngClass]="{'open': menuOpen}">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </a>
+  </li>
 </ul>
