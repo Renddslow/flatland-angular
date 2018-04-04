@@ -78,7 +78,7 @@ header-login {
 
 header-logo {
   display: block;
-  width: 25%;
+  width: 260px;
   overflow: hidden;
   float: left;
 	margin: 1em auto;
@@ -87,7 +87,7 @@ header-logo {
 }
 
 header-nav {
-	width: 75%;
+	width: calc(100% - 260px);
   margin: 1.7em 0 0;
 	padding: 0 2em;
   text-align: right;
@@ -235,49 +235,29 @@ span.modal-header i {
 	.page-card {
 		width: 90%;
 	}
+
+  header-logo {
+    padding-right: 0;
+    width: 230px;
+  }
+
+  .header-nav-item.menu {
+    margin-left: 0 !important;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .header-nav-item {
+    display: none !important;
+  }
+
+  .header-nav-item.menu {
+    display: block !important;
+    float: right;
+  }
 }
 
 @media screen and (max-width: 960px) {
-	header-nav {
-		display: none;
-	}
-
-	header-logo {
-		width: 300px;
-	}
-
-	header-mobile-hamburger,
-	header-mobile-menu {
-		display: block;
-	}
-
-	#menu-toggle:checked + header-mobile-hamburger .hamburger span {
-		opacity: 0;
-		background: #fff;
-	}
-
-	#menu-toggle:checked + header-mobile-hamburger .hamburger span:first-of-type {
-		transform: rotate(45deg);
-		opacity: 1;
-		position: absolute;
-		top: 11px;
-	}
-
-	#menu-toggle:checked + header-mobile-hamburger .hamburger span:last-of-type {
-		transform: rotate(-45deg);
-		opacity: 1;
-		position: absolute;
-		top: 11px;
-	}
-
-	#menu-toggle:checked + header-mobile-hamburger .hamburger {
-		position: fixed;
-	}
-
-	#menu-toggle:checked ~ header-mobile-menu .mobile-menu {
-		right: 0;
-	}
-
 	.modal {
 		width: 85%;
 		left: 7.5%;

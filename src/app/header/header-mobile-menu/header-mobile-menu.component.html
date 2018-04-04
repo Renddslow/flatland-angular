@@ -2,8 +2,7 @@
 	<ul>
 		<li *ngFor="let navItem of navigation">
 			<a [routerLink]="[navItem.uri]" (click)="hideMenu()">
-				{{ navItem.mainLabel }}
-				<sub>{{ navItem.subLabel }}</sub>
+				{{ navItem.label }}
 			</a>
 		</li>
 	</ul>
