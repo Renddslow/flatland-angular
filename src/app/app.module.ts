@@ -15,6 +15,7 @@ import { HeaderRedbarComponent } from './header/header-redbar/header-redbar.comp
 import { HomepageComponent } from './homepage/homepage.component';
 import { PageComponent } from './page/page.component';
 import { FooterComponent } from './footer/footer.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 import { PageStackComponent } from './page/page-stack/page-stack.component';
 import { PageLocationComponent } from './page/page-location/page-location.component';
 import { PageListComponent } from './page/page-list/page-list.component';
@@ -34,6 +35,7 @@ import { HeaderMenuComponent } from './header/header-menu/header-menu.component'
 
 const appRoutes: Routes = [
 	{ path: '', component: HomepageComponent },
+	{ path: '404', component: NotFoundComponent },
 	{ path: 'enjoy/:permalink', component: PostComponent },
 	{ path: 'blog/:permalink', component: PostComponent },
 	{ path: 'move/classes/:permalink', component: PostComponent },
@@ -43,7 +45,7 @@ const appRoutes: Routes = [
 	{ path: 'series/:permalink', component: SeriesComponent },
 	{ path: ':permalink', component: PageComponent },
 	{ path: ':permalink/topic/:topic', component: PageComponent },
-	{ path: ':parent/:permalink', component: PageComponent },
+	{ path: ':parent/:permalink', component: PageComponent }
 ];
 
 @NgModule({
@@ -74,7 +76,8 @@ const appRoutes: Routes = [
     SeriesComponent,
     PostActionComponentComponent,
     PostDatesComponent,
-    HeaderMenuComponent
+    HeaderMenuComponent,
+		NotFoundComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'flatland-v2'}),
