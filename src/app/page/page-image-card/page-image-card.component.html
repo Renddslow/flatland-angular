@@ -38,10 +38,23 @@
 </div>
 
 <div class="card-container move" *ngIf="type == 'move/classes'">
-	<a *ngFor="let class of classes" class="image-card" [routerLink]="['/move/classes/'] + class['permalink']">
+	<a
+    *ngFor="let class of classes"
+    class="image-card"
+    [routerLink]="['/move/classes/'] + class['permalink']"
+    [ngClass]="{ 'double-wide': class['banner'] && class['banner']['featured'] }"
+  >
 		<div class="card-image video" [ngStyle]="{'background-image': 'url(' + class['image'] + ')'}"></div>
 		<div class="card-meta video">
 			<h2>{{ class['title'] }}</h2>
+      <div
+        class="tag"
+        *ngIf="class['banner'] && class['banner']['label']"
+        [ngStyle]="{ 'background': '#' + class['banner']['color'] }"
+        [ngClass]="{ 'featured': class['banner']['featured'] }"
+      >
+        {{ class['banner']['label'] }}
+      </div>
 		</div>
 	</a>
 </div>
