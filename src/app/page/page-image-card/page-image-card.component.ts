@@ -109,9 +109,19 @@ export class PageImageCardComponent implements OnInit {
 
   getRecommendations = (permalink) => {
     this.http.request(`https://api.flatlandchurch.com/v2/sermons/${permalink}/series?key=pk_e6afff4e5ad186e9ce389cc21c225`)
-      .subscribe((res: Response) => {
-        this.sermons = res.json().slice(0, 3);
-      });
+      .subscribe(
+				(res: Response) => {
+        	this.sermons = res.json().slice(0, 3);
+      	},
+				err => {
+					this.http.request('https://api.flatlandchurch.com/v2/sermons?key=pk_e6afff4e5ad186e9ce389cc21c225')
+						.subscribe(
+							(res: Response) => {
+								this.sermons = res.json().slice(1, 4);
+							}
+						)
+				}
+			);
   }
 
   getGroups = () => {
