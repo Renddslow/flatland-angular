@@ -1,0 +1,10 @@
+<div class="cta-container" [ngClass]="{'has-secondary': action['secondaryExternalUrl']}">
+  <div>
+    <a class="cta" *ngIf="action['internalUrl']" [routerLink]="['/'] + action['internalUrl']">{{ action['label'] }}</a>
+    <a class="cta" *ngIf="action['externalUrl']" href="{{ action['externalUrl'] }}">{{ action['label'] }}</a>
+  </div>
+  <div>
+    <a *ngIf="action['secondaryInternalUrl']" [routerLink]="['/'] + action['secondaryInternalUrl']">{{ action['secondaryLabel'] }}</a>
+    <a *ngIf="action['secondaryExternalUrl']" href="{{ action['secondaryExternalUrl'] }}">{{ action['secondaryLabel'] }}</a>
+  </div>
+</div>

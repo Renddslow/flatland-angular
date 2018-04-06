@@ -1,0 +1,11 @@
+.cta-container.has-secondary {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.cta-container.has-secondary > div {
+  flex-basis: 40%;
+  margin: 0 1em;
+}
