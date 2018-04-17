@@ -49,6 +49,24 @@
 </head>
 <body>
   <app-root></app-root>
+	<script type="application/ld+json">
+		{
+		  "@context": "http://schema.org",
+		  "@type": "Organization",
+		  "url": "https://flatlandchurch.com",
+		  "logo": "https://i.imgur.com/6vnnqG8.png",
+			"contactPoint": {
+		    "@type": "ContactPoint",
+		    "telephone": "+1-402-492-9111",
+		    "contactType": "customer service"
+		  },
+			"sameAs": [
+				"https://www.facebook.com/flatlandchurchomaha/",
+		    "https://instagram.com/flatlandchurch",
+		    "https://twitter.com/flatlandchurch"
+			]
+		}
+	</script>
   <script>
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -59,7 +77,8 @@
 		  ga('send', 'pageview');
 
   </script>
-  <script>
+	<!-- Hiding until we get approval for this -->
+  <!-- <script>
     !function() {
       var t;
       if (t = window.driftt = window.drift = window.driftt || [], !t.init) return t.invoked ? void (window.console && console.error && console.error("Drift snippet included twice.")) : (t.invoked = !0,
@@ -80,6 +99,6 @@
     }();
     drift.SNIPPET_VERSION = '0.3.1';
     drift.load('xvprnrbp9a9a');
-  </script>
+  </script> -->
 </body>
 </html>
