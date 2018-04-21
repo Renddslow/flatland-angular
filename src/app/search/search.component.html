@@ -1,0 +1,35 @@
+<div class="search-overlay" (click)="closeSearchMenu()"></div>
+<div class="search-exit" (click)="closeSearchMenu()">
+  <span></span>
+  <span></span>
+</div>
+<div class="search-column">
+  <div class="form-row">
+    <label>Start Searching</label>
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      (keyup)="performSearch()"
+      autofocus="autofocus"
+      appAutofocus
+      placeholder="Type to search..."
+      (keydown.esc)="closeSearchMenu()"
+    >
+  </div>
+  <div class="search-results" *ngIf="searchResults.length">
+    <div
+      class="search-card"
+      *ngFor="let result of searchResults"
+      [routerLink]="[result['id']]"
+      (click)="closeSearchMenu()"
+    >
+      <div class="search-card-image" *ngIf="result['attributes']['image']">
+        <img [src]="result['attributes']['image']" />
+      </div>
+      <div class="search-card-content">
+        <sub>{{ result['attributes']['displayType'] }}</sub>
+        <h5>{{ result['attributes']['title'] }}</h5>
+      </div>
+    </div>
+  </div>
+</div>

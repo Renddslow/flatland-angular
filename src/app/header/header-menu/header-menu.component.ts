@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'header-menu',
@@ -8,4 +8,9 @@ import { Component, Input } from '@angular/core';
 export class HeaderMenuComponent {
   @Input() navigation;
   @Input() mobileNav;
+  @Output() openSearch = new EventEmitter<boolean>();
+
+  openSearchMenu() {
+    this.openSearch.emit(true);
+  }
 }

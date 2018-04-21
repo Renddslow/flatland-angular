@@ -88,7 +88,7 @@ header-logo {
 
 header-nav {
 	width: calc(100% - 260px);
-  margin: 1.7em 0 0;
+  margin: 1.3em 0 0;
 	padding: 0 2em;
   text-align: right;
   display: block;
@@ -254,6 +254,7 @@ span.modal-header i {
   .header-nav-item.menu {
     display: block !important;
     float: right;
+    top: 7px;
   }
 }
 

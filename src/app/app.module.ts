@@ -33,6 +33,8 @@ import { PostActionComponentComponent } from './post-action-component/post-actio
 import { PostDatesComponent } from './post/post-dates/post-dates.component';
 import { HeaderMenuComponent } from './header/header-menu/header-menu.component';
 import { PageActionComponent } from './page/page-action/page-action.component';
+import { SearchComponent } from './search/search.component';
+import { AutofocusDirective } from './autofocus.directive';
 
 const appRoutes: Routes = [
 	{ path: '', component: HomepageComponent },
@@ -79,7 +81,9 @@ const appRoutes: Routes = [
     PostDatesComponent,
     HeaderMenuComponent,
 		NotFoundComponent,
-		PageActionComponent
+		PageActionComponent,
+		SearchComponent,
+		AutofocusDirective
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'flatland-v2'}),

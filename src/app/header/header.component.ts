@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import {NavigationEnd} from '@angular/router';
 import { Router } from '@angular/router';
@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  @Output() openSearch = new EventEmitter<boolean>();
   redBar = null;
 
   navigation = {
@@ -131,6 +132,10 @@ export class HeaderComponent implements OnInit {
     } else {
       document.body.style.overflow = 'unset';
     }
+  }
+
+  openSearchMenu() {
+    this.openSearch.emit(true);
   }
 
 }

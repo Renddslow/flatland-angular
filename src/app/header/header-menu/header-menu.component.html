@@ -2,6 +2,9 @@
   <div class="flex-container">
     <div class="mobile-only">
       <ul>
+        <li>
+          <a (click)="openSearchMenu()"><i class="material-icons">search</i> Search</a>
+        </li>
         <li *ngFor="let navItem of mobileNav">
           <a [routerLink]="navItem['uri']">{{ navItem['label'] }}</a>
         </li>
