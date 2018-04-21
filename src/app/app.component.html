@@ -1,25 +1,6 @@
-<app-header></app-header>
+<app-header (openSearch)="openSearch()"></app-header>
+<app-search *ngIf="searchOpen" (closeSearch)="closeSearch()"></app-search>
 <div class="content-wrapper">
 	<router-outlet></router-outlet>
-
-	<!-- <button class="fab" *ngIf="displayCommFab" (click)="openCommModal()"><i class="material-icons">forum</i></button> -->
-
-	<div class="comm-modal" *ngIf="displayCommModal">
-		<div class="modal-header">
-			<i *ngIf="!displayCommForm" class="material-icons chat_bubble">chat_bubble_outline</i>
-			<i class="material-icons" *ngIf="displayCommForm" (click)="hideForm()">chevron_left</i>
-			<div class="spacer"></div>
-			<h2>Get In Touch</h2>
-			<div class="spacer"></div>
-			<i class="material-icons" (click)="closeCommModal()">close</i>
-		</div>
-		<div class="form-selector" *ngIf="!displayCommForm">
-			<a class="cta" (click)="presentForm('new')">I'm New Here</a>
-			<a class="cta" (click)="presentForm('prayer')">I Need Prayer</a>
-			<a class="cta" (click)="presentForm('serve')">I'm Ready to Serve</a>
-			<a class="cta" (click)="presentForm('question')">I Have a Question</a>
-		</div>
-	</div>
-
 </div>
 <app-footer></app-footer>

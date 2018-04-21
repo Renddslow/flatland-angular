@@ -2,6 +2,6 @@
 <header-login [loginLinks]="navigation.login"></header-login>
 <header>
 	<header-logo></header-logo>
-	<header-nav [navigation]="navigation.navItems" (menuStateChanged)="changeMenuState($event)"></header-nav>
-  <header-menu *ngIf="menuOpen" [navigation]="navigation.menuItems" [mobileNav]="navigation.navItems"></header-menu>
+	<header-nav [navigation]="navigation.navItems" (menuStateChanged)="changeMenuState($event)" (openSearch)="openSearchMenu()"></header-nav>
+  <header-menu *ngIf="menuOpen" [navigation]="navigation.menuItems" [mobileNav]="navigation.navItems" (openSearch)="openSearchMenu()"></header-menu>
 </header>

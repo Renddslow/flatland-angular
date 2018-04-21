@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class HeaderNavComponent implements OnInit {
   @Input() navigation: [object];
   @Output() menuStateChanged = new EventEmitter<string>();
+  @Output() openSearch = new EventEmitter<boolean>();
 
   menuOpen = false;
 
@@ -31,5 +32,9 @@ export class HeaderNavComponent implements OnInit {
       this.menuOpen = !this.menuOpen;
     }
     this.menuStateChanged.emit(this.menuOpen ? 'open' : 'closed');
+  }
+
+  openSearchMenu() {
+    this.openSearch.emit(true);
   }
 }
