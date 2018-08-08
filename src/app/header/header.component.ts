@@ -57,6 +57,10 @@ export class HeaderComponent implements OnInit {
           {
             uri: '/visit',
             label: 'Location'
+          },
+          {
+            uri: '/move/classes/next-step',
+            label: 'Next Steps'
           }
         ]
       },
@@ -78,6 +82,10 @@ export class HeaderComponent implements OnInit {
           {
             uri: '/enjoy',
             label: 'Events'
+          },
+          {
+            uri: '/missions',
+            label: 'Missions'
           }
         ]
       },
@@ -99,6 +107,10 @@ export class HeaderComponent implements OnInit {
           {
             uri: '/radio',
             label: 'Move to the Center Podcast'
+          },
+          {
+            uri: '/visit/kids',
+            label: 'Parents'
           }
         ]
       }
